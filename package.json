@@ -1,0 +1,49 @@
+{
+  "name": "esm-bundling-demo",
+  "version": "1.0.0",
+  "description": "TODO",
+  "author": "Mikael Vesavuori",
+  "type": "module",
+  "exports": {
+    "import": "./esm/index.js"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "files": [
+    "/lib",
+    "!/lib/**/*.map",
+    "!/tests"
+  ],
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "test": "NODE_OPTIONS='--loader=tsx --no-warnings' npx c8 -reporter=lcov ava",
+    "build": "npm run clean && npm run compile && npm run bundle",
+    "bundle": "npx ncc build src/index.ts --license licenses.txt -o lib",
+    "compile": "npx tsc",
+    "clean": "rm -rf lib",
+    "verify": "node verify.mjs"
+  },
+  "devDependencies": {
+    "@ava/typescript": "4",
+    "@types/node": "18",
+    "@typescript-eslint/eslint-plugin": "5",
+    "@typescript-eslint/parser": "5",
+    "@vercel/ncc": "0",
+    "ava": "5",
+    "c8": "8",
+    "eslint": "8",
+    "eslint-config-prettier": "8",
+    "eslint-plugin-prettier": "4",
+    "prettier": "2",
+    "tsx": "3",
+    "typescript": "5"
+  },
+  "ava": {
+    "files": [
+      "tests/*.test.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    }
+  }
+}
