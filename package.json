@@ -1,7 +1,7 @@
 {
   "name": "esm-bundling-demo",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "This project demonstrates bundling TypeScript code to ES Modules.",
   "author": "Mikael Vesavuori",
   "type": "module",
   "exports": {
